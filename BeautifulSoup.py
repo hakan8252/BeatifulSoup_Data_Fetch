@@ -61,6 +61,7 @@ for value in list(zip(job_dict["job_name"], job_dict["service_type"], job_dict["
     print(f"Job Name: {value[0]} \n Service Type: {value[1]} \n Release Date : {value[2]} \n Jobs Place : {value[3]} \n")
     #yeni değişiklik. silindi.
 
+
 # for https://jobs.apple.com/en-us/search?location=united-states-USA jobs
 def find_jobs(no_of_jobtitle = 5):
     job_title = []
