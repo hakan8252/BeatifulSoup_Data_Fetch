@@ -3,7 +3,6 @@
 import time
 
 from bs4 import BeautifulSoup
-import re
 
 with open("Web-Scraping/home.html", "r", errors="ignore") as html_file:
     content = html_file.read() # read the file
@@ -40,25 +39,12 @@ import requests
 html_text = requests.get("https://jobs.apple.com/en-us/search?location=united-states-USA").text
 soup = BeautifulSoup(html_text, "lxml")
 jobs = soup.find_all("td", class_="table-col-1")
-jobs_place = soup.select("[id*=storeName_container]")
-job_dict = {"job_name": [], "service_type": [], "date": [], "jobs_place": []}
-
 for job in jobs:
     job_name = job.find("a", class_="table--advanced-search__title").text.strip()#remove blanks
     service_type = job.find("span", class_ = "table--advanced-search__role").text.strip()
     date = job.find("span", class_="table--advanced-search__date").text.strip()
-    job_dict["job_name"].append(job_name)
-    job_dict["service_type"].append(service_type)
-    job_dict["date"].append(date)
     #results only current page because of pagination.
-    # print(f"Job Name: {job_name} \n Service Type: {service_type} \n Release Date : {date} \n")
-
-for job_place in jobs_place:
-    job_p = job_place.text.strip() # remove blanks
-    job_dict["jobs_place"].append(job_p)
-
-for value in list(zip(job_dict["job_name"], job_dict["service_type"], job_dict["date"], job_dict["jobs_place"])):
-    print(f"Job Name: {value[0]} \n Service Type: {value[1]} \n Release Date : {value[2]} \n Jobs Place : {value[3]} \n")
+    print(f"Job Name: {job_name} \n Service Type: {service_type} \n Release Date : {date} \n")
 
 # for https://jobs.apple.com/en-us/search?location=united-states-USA jobs
 def find_jobs(no_of_jobtitle = 5):
