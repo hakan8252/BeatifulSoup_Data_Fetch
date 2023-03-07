@@ -57,8 +57,8 @@ for job_place in jobs_place:
     job_p = job_place.text.strip() # remove blanks
     job_dict["jobs_place"].append(job_p)
 
-for value in list(zip(job_dict["job_name"], job_dict["service_type"], job_dict["date"], job_dict["jobs_place"])):
-    print(f"Job Name: {value[0]} \n Service Type: {value[1]} \n Release Date : {value[2]} \n Jobs Place : {value[3]} \n")
+# for value in list(zip(job_dict["job_name"], job_dict["service_type"], job_dict["date"], job_dict["jobs_place"])):
+#     print(f"Job Name: {value[0]} \n Service Type: {value[1]} \n Release Date : {value[2]} \n Jobs Place : {value[3]} \n")
 
 # for https://jobs.apple.com/en-us/search?location=united-states-USA jobs
 def find_jobs(no_of_jobtitle = 5):
